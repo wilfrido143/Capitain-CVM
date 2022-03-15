@@ -37,6 +37,24 @@ public static class PlayerDataJson
         }
         else json += "]" + newline;
         json += "}";
+
+        json += tab + "\"Niveauxfinis\":[";
+        if (data.ListeNiveauxfinis.Length > 0)
+        {
+            json += newline;
+            for (int i = 0; i < data.ListeNiveauxfinis.Length; i++)
+            {
+                string chestData = data.ListeNiveauxfinis[i];
+                json += tab + tab + "\"" + chestData + "\"";
+                if (i + 1 < data.ListeNiveauxfinis.Length)
+                    json += ",";
+                json += newline;
+            }
+            json += tab + "]" + newline;
+        }
+        else json += "]" + newline;
+        json += "}";
+
         return json;
     }
 
@@ -103,10 +121,22 @@ public static class PlayerDataJson
                             .Replace("\"", string.Empty));
                     }
                     break;
+                case "\"Niveauxfinis\"":
+                    if (parametre[1] == "[]")
+                        break;
+                    else if (parametre[1] != "[")
+                        throw new JSONFormatExpcetion();
+                    while (lignes[++i] != "]")
+                    {
+                        niveaux.Add(lignes[i]
+                            .Replace(",", string.Empty)
+                            .Replace("\"", string.Empty));
+                    }
+                    break;
             }
         }
 
-        return new PlayerData(vie, energie, score, vlmGeneral, vlmMusique, vlmEffet, ChestList: chests);
+        return new PlayerData(vie, energie, score, vlmGeneral, vlmMusique, vlmEffet, ChestList: chests, NiveauxList: niveaux);
     }
 }
 

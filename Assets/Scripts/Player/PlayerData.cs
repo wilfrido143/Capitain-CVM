@@ -46,6 +46,10 @@ public class PlayerData
     /// </summary>
     private List<string> _chestOpenList;
     /// <summary>
+    /// Liste des niveaux finis
+    /// </summary>
+    private List<bool> _niveauxReussis;
+    /// <summary>
     /// Représente le maximum d'énergie du personnage
     /// </summary>
     public const int MAX_ENERGIE = 4;
@@ -64,10 +68,12 @@ public class PlayerData
     /// </summary>
     public System.Action Gameover;
 
+
     public int Energie { get { return this._energie; } }
     public int Vie { get { return this._vie; } }
     public int Score { get { return this._score; } }
     public string[] ListeCoffreOuvert { get { return this._chestOpenList.ToArray(); } }
+    public string[] ListeNiveauxfinis { get { return this._niveauxReussis.ToArray(); } }
 
     public PlayerData()
     {
@@ -81,12 +87,13 @@ public class PlayerData
         this.UIPerteVie = null;
         this.Gameover = null;
         this._chestOpenList = new List<string>();
+        this._niveauxReussis = new List<string>();
     }
 
     public PlayerData(int vie = 1, int energie = 2, int score = 0,
         float volumeGeneral = 0, float volumeMusique = 0, float volumeEffet = 0,
         System.Action uiPerteEnergie = null, System.Action uiPerteVie = null,
-        System.Action gameOver = null, List<string> ChestList = null)
+        System.Action gameOver = null, List<string> ChestList = null, List<string> NiveauxList = null)
     {
         this._vie = vie;
         this._energie = energie;
@@ -100,6 +107,9 @@ public class PlayerData
         this._chestOpenList = new List<string>();
         if (ChestList != null)
             this._chestOpenList = ChestList;
+        this._niveauxReussis = new List<string>();
+        if (NiveauxList != null)
+            this._niveauxReussis = NiveauxList;
     }
 
     /// <summary>
@@ -185,5 +195,26 @@ public class PlayerData
     public bool AvoirOuvertureCoffre(string nom)
     {
         return this._chestOpenList.Contains(nom);
+    }
+
+
+    /// <summary>
+    /// Ajoute le nom du niveau fini à la liste
+    /// </summary>
+    /// <param name="nom">Nom du niveau à ajouter</param>
+    public void NiveauFinis(string nom)
+    {
+        this._niveauxReussis.Add(nom);
+    }
+
+    /// <summary>
+    /// Détermine si le niveau est contenu dans la liste
+    /// des niveaux finis
+    /// </summary>
+    /// <param name="nom">Nom du niveau à vérifier</param>
+    /// <returns>true si le niveau est fini, false sinon</returns>
+    public void AvoirNiveauFinis(string nom)
+    {
+        return this._niveauxReussis.Contains(nom);
     }
 }
