@@ -36,7 +36,6 @@ public static class PlayerDataJson
             json += tab + "]" + newline;
         }
         else json += "]" + newline;
-        json += "}";
 
         json += tab + "\"Niveauxfinis\":[";
         if (data.ListeNiveauxfinis.Length > 0)
@@ -44,8 +43,8 @@ public static class PlayerDataJson
             json += newline;
             for (int i = 0; i < data.ListeNiveauxfinis.Length; i++)
             {
-                string chestData = data.ListeNiveauxfinis[i];
-                json += tab + tab + "\"" + chestData + "\"";
+                string niveauData = data.ListeNiveauxfinis[i];
+                json += tab + tab + "\"" + niveauData + "\"";
                 if (i + 1 < data.ListeNiveauxfinis.Length)
                     json += ",";
                 json += newline;
@@ -79,6 +78,7 @@ public static class PlayerDataJson
         int vie = 0, energie = 0, score = 0;
         float vlmGeneral = 0, vlmMusique = 0, vlmEffet = 0;
         List<string> chests = new List<string>();
+        List<string> niveaux = new List<string>();
         string[] lignes = json.Split('\n');
         
         for(int i = 1; i < lignes.Length || lignes[i] != "}"; i++)
@@ -121,18 +121,18 @@ public static class PlayerDataJson
                             .Replace("\"", string.Empty));
                     }
                     break;
-                case "\"Niveauxfinis\"":
-                    if (parametre[1] == "[]")
-                        break;
-                    else if (parametre[1] != "[")
-                        throw new JSONFormatExpcetion();
-                    while (lignes[++i] != "]")
-                    {
-                        niveaux.Add(lignes[i]
-                            .Replace(",", string.Empty)
-                            .Replace("\"", string.Empty));
-                    }
-                    break;
+               case "\"Niveauxfinis\"":
+                   if (parametre[1] == "[]")
+                       break;
+                   else if (parametre[1] != "[")
+                       throw new JSONFormatExpcetion();
+                   while (lignes[++i] != "]")
+                   {
+                       niveaux.Add(lignes[i]
+                           .Replace(",", string.Empty)
+                           .Replace("\"", string.Empty));
+                   }
+                   break;
             }
         }
 

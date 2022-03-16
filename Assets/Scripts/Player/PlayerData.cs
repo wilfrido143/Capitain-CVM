@@ -48,7 +48,7 @@ public class PlayerData
     /// <summary>
     /// Liste des niveaux finis
     /// </summary>
-    private List<bool> _niveauxReussis;
+    private List<string> _niveauxReussis;
     /// <summary>
     /// Représente le maximum d'énergie du personnage
     /// </summary>
@@ -202,7 +202,7 @@ public class PlayerData
     /// Ajoute le nom du niveau fini à la liste
     /// </summary>
     /// <param name="nom">Nom du niveau à ajouter</param>
-    public void NiveauFinis(string nom)
+    public void NiveauxFinis(string nom)
     {
         this._niveauxReussis.Add(nom);
     }
@@ -213,8 +213,8 @@ public class PlayerData
     /// </summary>
     /// <param name="nom">Nom du niveau à vérifier</param>
     /// <returns>true si le niveau est fini, false sinon</returns>
-    public void AvoirNiveauFinis(string nom)
+    public bool AvoirNiveauFinis(string nom)
     {
-        return this._niveauxReussis.Contains(nom);
+         return this._niveauxReussis.Contains(nom);
     }
 }
