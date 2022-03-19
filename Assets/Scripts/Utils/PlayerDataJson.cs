@@ -52,6 +52,37 @@ public static class PlayerDataJson
             json += tab + "]" + newline;
         }
         else json += "]" + newline;
+
+        json += tab + "\"Collectables\":[";
+        if (data.ListeCollectables.Length > 0)
+        {
+            json += newline;
+            for (int i = 0; i < data.ListeCollectables.Length; i++)
+            {
+                string collectableData = data.ListeCollectables[i];
+                json += tab + tab + "\"" + collectableData + "\"";
+                if (i + 1 < data.ListeCollectables.Length)
+                    json += ",";
+                json += newline;
+            }
+            json += tab + "]" + newline;
+        }
+        else json += "]" + newline;
+        json += tab + "\"Sprites\":[";
+        if (data.ListeSprites.Length > 0)
+        {
+            json += newline;
+            for (int i = 0; i < data.ListeSprites.Length; i++)
+            {
+                string spriteData = data.ListeSprites[i];
+                json += tab + tab + "\"" + spriteData + "\"";
+                if (i + 1 < data.ListeSprites.Length)
+                    json += ",";
+                json += newline;
+            }
+            json += tab + "]" + newline;
+        }
+        else json += "]" + newline;
         json += "}";
 
         return json;
@@ -79,6 +110,9 @@ public static class PlayerDataJson
         float vlmGeneral = 0, vlmMusique = 0, vlmEffet = 0;
         List<string> chests = new List<string>();
         List<string> niveaux = new List<string>();
+        List<string> collectables = new List<string>();
+        List<string> sprites = new List<string>();
+
         string[] lignes = json.Split('\n');
         
         for(int i = 1; i < lignes.Length || lignes[i] != "}"; i++)
@@ -133,10 +167,34 @@ public static class PlayerDataJson
                            .Replace("\"", string.Empty));
                    }
                    break;
+                case "\"Collectables\"":
+                    if (parametre[1] == "[]")
+                        break;
+                    else if (parametre[1] != "[")
+                        throw new JSONFormatExpcetion();
+                    while (lignes[++i] != "]")
+                    {
+                        collectables.Add(lignes[i]
+                            .Replace(",", string.Empty)
+                            .Replace("\"", string.Empty));
+                    }
+                    break;
+               case "\"Sprites\"":
+                   if (parametre[1] == "[]")
+                       break;
+                   else if (parametre[1] != "[")
+                       throw new JSONFormatExpcetion();
+                   while (lignes[++i] != "]")
+                   {
+                       sprites.Add(lignes[i]
+                           .Replace(",", string.Empty)
+                           .Replace("\"", string.Empty));
+                   }
+                   break;
             }
         }
 
-        return new PlayerData(vie, energie, score, vlmGeneral, vlmMusique, vlmEffet, ChestList: chests, NiveauxList: niveaux);
+        return new PlayerData(vie, energie, score, vlmGeneral, vlmMusique, vlmEffet, ChestList: chests, NiveauxList: niveaux, Collectables : collectables, Sprites : sprites);
     }
 }
 

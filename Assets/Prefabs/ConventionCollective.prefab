@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6948819342474517260}
   - component: {fileID: 6948819342474517261}
   - component: {fileID: 6948819342474517262}
+  - component: {fileID: 1756374430538152128}
   m_Layer: 0
   m_Name: ConventionCollective
   m_TagString: Untagged
@@ -123,3 +124,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gainPoint: 3
   _clip: {fileID: 8300000, guid: 766a6737ab384a244b54f977c968f105, type: 3}
+--- !u!114 &1756374430538152128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6948819342474517263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f30d20279d95d2c45b9769513fa0f65f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _estCollecter: 0

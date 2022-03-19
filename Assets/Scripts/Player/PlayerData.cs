@@ -50,6 +50,17 @@ public class PlayerData
     /// </summary>
     private List<string> _niveauxReussis;
     /// <summary>
+    /// Liste des collectables récoltés
+    /// </summary>
+    private List<string> _collectables;
+    /// <summary>
+    /// Liste des sprites des collectables récoltés
+    /// </summary>
+    /// 
+
+    private List<string> _spriteslist;
+
+    /// <summary>
     /// Représente le maximum d'énergie du personnage
     /// </summary>
     public const int MAX_ENERGIE = 4;
@@ -74,6 +85,9 @@ public class PlayerData
     public int Score { get { return this._score; } }
     public string[] ListeCoffreOuvert { get { return this._chestOpenList.ToArray(); } }
     public string[] ListeNiveauxfinis { get { return this._niveauxReussis.ToArray(); } }
+    public string[] ListeCollectables { get { return this._collectables.ToArray(); } }
+    public string[] ListeSprites { get { return this._spriteslist.ToArray(); } }
+
 
     public PlayerData()
     {
@@ -88,12 +102,14 @@ public class PlayerData
         this.Gameover = null;
         this._chestOpenList = new List<string>();
         this._niveauxReussis = new List<string>();
+        this._collectables = new List<string>();
+        this._spriteslist = new List<string>();
     }
 
     public PlayerData(int vie = 1, int energie = 2, int score = 0,
         float volumeGeneral = 0, float volumeMusique = 0, float volumeEffet = 0,
         System.Action uiPerteEnergie = null, System.Action uiPerteVie = null,
-        System.Action gameOver = null, List<string> ChestList = null, List<string> NiveauxList = null)
+        System.Action gameOver = null, List<string> ChestList = null, List<string> NiveauxList = null, List<string> Collectables = null, List<string> Sprites = null)
     {
         this._vie = vie;
         this._energie = energie;
@@ -110,6 +126,10 @@ public class PlayerData
         this._niveauxReussis = new List<string>();
         if (NiveauxList != null)
             this._niveauxReussis = NiveauxList;
+        if(Collectables != null)
+            this._collectables = Collectables;
+        if(Sprites != null)
+            this._spriteslist = Sprites;
     }
 
     /// <summary>
@@ -217,4 +237,35 @@ public class PlayerData
     {
          return this._niveauxReussis.Contains(nom);
     }
+
+    /// <summary>
+    /// Ajoute le nom du collectionable à la liste
+    /// </summary>
+    /// <param name="nom">Nom du coffre à ajouter</param>
+    public void AjouterCollectable(string nom)
+    {
+        this._collectables.Add(nom);
+    }
+
+    public void AjouterSprite(string sprite)
+    {
+       this._spriteslist.Add(sprite);
+    }
+
+    public List<string> AvoirSprite()
+    {
+        return this._spriteslist;
+    }
+
+    /// <summary>
+    /// Détermine si le coffre est contenu dans la liste
+    /// des coffres ouverts
+    /// </summary>
+    /// <param name="nom">Nom du coffre à vérifier</param>
+    /// <returns>true si le coffre est ouvert, false sinon</returns>
+    public bool AvoirCollectable(string nom)
+    {
+        return this._collectables.Contains(nom);
+    }
+
 }
