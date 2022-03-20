@@ -53,30 +53,47 @@ public static class PlayerDataJson
         }
         else json += "]" + newline;
 
-        json += tab + "\"Collectables\":[";
-        if (data.ListeCollectables.Length > 0)
+        json += tab + "\"CarteMembres\":[";
+        if (data.ListeCarteMembres.Length > 0)
         {
             json += newline;
-            for (int i = 0; i < data.ListeCollectables.Length; i++)
+            for (int i = 0; i < data.ListeCarteMembres.Length; i++)
             {
-                string collectableData = data.ListeCollectables[i];
-                json += tab + tab + "\"" + collectableData + "\"";
-                if (i + 1 < data.ListeCollectables.Length)
+                string carteData = data.ListeCarteMembres[i];
+                json += tab + tab + "\"" + carteData + "\"";
+                if (i + 1 < data.ListeCarteMembres.Length)
                     json += ",";
                 json += newline;
             }
             json += tab + "]" + newline;
         }
         else json += "]" + newline;
-        json += tab + "\"Sprites\":[";
-        if (data.ListeSprites.Length > 0)
+
+        json += tab + "\"Chapeaux\":[";
+        if (data.ListeChapeaux.Length > 0)
         {
             json += newline;
-            for (int i = 0; i < data.ListeSprites.Length; i++)
+            for (int i = 0; i < data.ListeChapeaux.Length; i++)
             {
-                string spriteData = data.ListeSprites[i];
-                json += tab + tab + "\"" + spriteData + "\"";
-                if (i + 1 < data.ListeSprites.Length)
+                string chapeauData = data.ListeChapeaux[i];
+                json += tab + tab + "\"" + chapeauData + "\"";
+                if (i + 1 < data.ListeChapeaux.Length)
+                    json += ",";
+                json += newline;
+            }
+            json += tab + "]" + newline;
+        }
+        else json += "]" + newline;
+       
+        json += tab + "\"Conventions\":[";
+        if (data.ListeConventions.Length > 0)
+        {
+            json += newline;
+            for (int i = 0; i < data.ListeConventions.Length; i++)
+            {
+                string conventionData = data.ListeConventions[i];
+                json += tab + tab + "\"" + conventionData + "\"";
+                if (i + 1 < data.ListeConventions.Length)
                     json += ",";
                 json += newline;
             }
@@ -110,8 +127,9 @@ public static class PlayerDataJson
         float vlmGeneral = 0, vlmMusique = 0, vlmEffet = 0;
         List<string> chests = new List<string>();
         List<string> niveaux = new List<string>();
-        List<string> collectables = new List<string>();
-        List<string> sprites = new List<string>();
+        List<string> chapeaux = new List<string>();
+        List<string> cartes = new List<string>();
+        List<string> conventions = new List<string>();
 
         string[] lignes = json.Split('\n');
         
@@ -167,34 +185,48 @@ public static class PlayerDataJson
                            .Replace("\"", string.Empty));
                    }
                    break;
-                case "\"Collectables\"":
+                case "\"CarteMembres\"":
                     if (parametre[1] == "[]")
                         break;
                     else if (parametre[1] != "[")
                         throw new JSONFormatExpcetion();
                     while (lignes[++i] != "]")
                     {
-                        collectables.Add(lignes[i]
+                        cartes.Add(lignes[i]
                             .Replace(",", string.Empty)
                             .Replace("\"", string.Empty));
                     }
                     break;
-               case "\"Sprites\"":
+               case "\"Chapeaux\"":
                    if (parametre[1] == "[]")
                        break;
                    else if (parametre[1] != "[")
                        throw new JSONFormatExpcetion();
                    while (lignes[++i] != "]")
                    {
-                       sprites.Add(lignes[i]
+                       chapeaux.Add(lignes[i]
                            .Replace(",", string.Empty)
                            .Replace("\"", string.Empty));
                    }
                    break;
+                case "\"Conventions\"":
+                    if (parametre[1] == "[]")
+                        break;
+                    else if (parametre[1] != "[")
+                        throw new JSONFormatExpcetion();
+                    while (lignes[++i] != "]")
+                    {
+                        conventions.Add(lignes[i]
+                            .Replace(",", string.Empty)
+                            .Replace("\"", string.Empty));
+                    }
+                    break;
             }
         }
 
-        return new PlayerData(vie, energie, score, vlmGeneral, vlmMusique, vlmEffet, ChestList: chests, NiveauxList: niveaux, Collectables : collectables, Sprites : sprites);
+        return new PlayerData(vie, energie, score, vlmGeneral, vlmMusique, vlmEffet, 
+            ChestList: chests, NiveauxList: niveaux, CarteMembres: cartes, Chapeaux : chapeaux, 
+            Conventions : conventions);
     }
 }
 

@@ -26,8 +26,6 @@ public class ScoreUpgrade : MonoBehaviour
                 .PlayClipAtPoint(_clip, this.transform.position);
             GameManager.Instance
                 .PlayerData.IncrScore(this._gainPoint);
-            GameManager.Instance
-                .PlayerData.AjouterCollectable(_name);
             GameObject.Destroy(this.gameObject);
         }
     }

@@ -8,12 +8,13 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1926842824635657573}
+  - component: {fileID: 2620375793323188023}
   - component: {fileID: 1926842824635657572}
   - component: {fileID: 3789243195491899951}
   - component: {fileID: 61768090}
-  - component: {fileID: -1950771859687162857}
-  - component: {fileID: 4572724058856526209}
+  - component: {fileID: 2612008419005772409}
+  - component: {fileID: 3020410733755615113}
+  - component: {fileID: 4486048575222047097}
   m_Layer: 0
   m_Name: Chapeau
   m_TagString: Untagged
@@ -21,20 +22,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1926842824635657573
-Transform:
+--- !u!224 &2620375793323188023
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926842824635657575}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45.99, y: 5.009, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 0.07843885, y: 0.07843885, z: 0.07843885}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 45.99, y: 5.009}
+  m_SizeDelta: {x: 11, y: 10}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1926842824635657572
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -209,7 +215,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.177354, y: 8.870967}
   m_EdgeRadius: 0
---- !u!114 &-1950771859687162857
+--- !u!222 &2612008419005772409
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926842824635657575}
+  m_CullTransparentMesh: 0
+--- !u!114 &3020410733755615113
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -218,12 +232,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1926842824635657575}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7914e539275c4bf439b695124950ca8a, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c0eb8ae548956f458ba56242504e190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gainPoint: 3
-  _clip: {fileID: 8300000, guid: 65e1a6b584f1ea94b89ffd485d993824, type: 3}
---- !u!114 &4572724058856526209
+  _regainEnergie: 4
+  _clip: {fileID: 8300000, guid: 766a6737ab384a244b54f977c968f105, type: 3}
+--- !u!114 &4486048575222047097
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -232,8 +246,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1926842824635657575}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f30d20279d95d2c45b9769513fa0f65f, type: 3}
+  m_Script: {fileID: 11500000, guid: 0907c70b942f8454ab4eac290d0d51c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _estCollecter: 0
-  _collectable: {fileID: 0}

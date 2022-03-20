@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6948819342474517251}
   - component: {fileID: 6948819342474517260}
   - component: {fileID: 6948819342474517261}
-  - component: {fileID: 6948819342474517262}
-  - component: {fileID: 1756374430538152128}
+  - component: {fileID: 5005912334175618520}
+  - component: {fileID: 6025200760299374534}
   m_Layer: 0
   m_Name: ConventionCollective
   m_TagString: Untagged
@@ -110,7 +110,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5468578, y: 1.9573708}
   m_EdgeRadius: 0
---- !u!114 &6948819342474517262
+--- !u!114 &5005912334175618520
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,12 +119,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6948819342474517263}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7914e539275c4bf439b695124950ca8a, type: 3}
+  m_Script: {fileID: 11500000, guid: 95c7d7dd6aa33294089f690fbff74418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gainPoint: 3
-  _clip: {fileID: 8300000, guid: 766a6737ab384a244b54f977c968f105, type: 3}
---- !u!114 &1756374430538152128
+  _regainEnergie: 1
+  _clip: {fileID: 8300000, guid: 65e1a6b584f1ea94b89ffd485d993824, type: 3}
+--- !u!114 &6025200760299374534
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6948819342474517263}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f30d20279d95d2c45b9769513fa0f65f, type: 3}
+  m_Script: {fileID: 11500000, guid: e1048a8e972b27b4ca343949386db6e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _estCollecter: 0

@@ -7,69 +7,24 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Image))]
 public class CollectableUI : MonoBehaviour
 {
-    /// <summary>
-    /// Liste des sprites à utiliser selon le type
-    /// de contrôler
-    /// </summary>
-    [SerializeField]
-    private List<string> _sprites;
-    /// <summary>
-    /// Défini le contrôle à retrouver sur un clavier
-    /// </summary>
-    [SerializeField]
 
-    private Sprite spriteR;
-
-    [SerializeField]
-    private bool _ouvert;
-    
-
-    private void Start()
+    void Start()
     {
-        DesactiveInventaire();
+       
     }
 
-    private void Update()
+    public void ActiveInventaire(GameObject Objet)
     {
-        if (Input.GetKey("E")  && !_ouvert)
-        {
-            ActiveInventaire();
-            _ouvert = true;
-        }
-        else if (Input.GetKey("E") && _ouvert)
-        {
-            DesactiveInventaire();
-            _ouvert = false;
-        }
-    }
+        Objet.SetActive(true);
 
-
-    public void SetSpriteFromList()
-    {
-        
-        _sprites = GameManager.Instance.PlayerData.AvoirSprite();
-
-        for (int i = 1; i < gameObject.transform.childCount;)
-        {
-            spriteR = gameObject.transform.GetChild(i).gameObject.GetComponent<UnityEngine.UI.Image>().sprite;
-            spriteR.name = _sprites[i - 1];
-        }
     }
 
     /// <summary>
-    /// Affiche le GO avec le message
+    /// Désactive l'inventaire
     /// </summary>
-    /// <param name="message">Message à afficher</param>
-    public void ActiveInventaire()
+    public void DesactiveInventaire(GameObject Objet)
     {
-        this.gameObject.SetActive(true);
+        Objet.SetActive(false);
     }
 
-    /// <summary>
-    /// Désactive le GO
-    /// </summary>
-    public void DesactiveInventaire()
-    {
-        this.gameObject.SetActive(false);
-    }
 }

@@ -50,15 +50,17 @@ public class PlayerData
     /// </summary>
     private List<string> _niveauxReussis;
     /// <summary>
-    /// Liste des collectables récoltés
+    /// Liste des cartemembres récoltés
     /// </summary>
-    private List<string> _collectables;
+    private List<string> _carteMembres;
     /// <summary>
-    /// Liste des sprites des collectables récoltés
+    /// Liste des chapeaux récoltés
     /// </summary>
-    /// 
-
-    private List<string> _spriteslist;
+    private List<string> _chapeaux;
+    /// <summary>
+    /// Liste des conventions récoltés;
+    /// </summary>
+    private List<string> _conventions;
 
     /// <summary>
     /// Représente le maximum d'énergie du personnage
@@ -85,8 +87,9 @@ public class PlayerData
     public int Score { get { return this._score; } }
     public string[] ListeCoffreOuvert { get { return this._chestOpenList.ToArray(); } }
     public string[] ListeNiveauxfinis { get { return this._niveauxReussis.ToArray(); } }
-    public string[] ListeCollectables { get { return this._collectables.ToArray(); } }
-    public string[] ListeSprites { get { return this._spriteslist.ToArray(); } }
+    public string[] ListeCarteMembres { get { return this._carteMembres.ToArray(); } }
+    public string[] ListeChapeaux { get { return this._chapeaux.ToArray(); } }
+    public string[] ListeConventions { get { return this._conventions.ToArray(); } }
 
 
     public PlayerData()
@@ -102,14 +105,16 @@ public class PlayerData
         this.Gameover = null;
         this._chestOpenList = new List<string>();
         this._niveauxReussis = new List<string>();
-        this._collectables = new List<string>();
-        this._spriteslist = new List<string>();
+        this._carteMembres = new List<string>();
+        this._chapeaux = new List<string>();
+        this._conventions = new List<string>();
     }
 
     public PlayerData(int vie = 1, int energie = 2, int score = 0,
         float volumeGeneral = 0, float volumeMusique = 0, float volumeEffet = 0,
         System.Action uiPerteEnergie = null, System.Action uiPerteVie = null,
-        System.Action gameOver = null, List<string> ChestList = null, List<string> NiveauxList = null, List<string> Collectables = null, List<string> Sprites = null)
+        System.Action gameOver = null, List<string> ChestList = null, List<string> NiveauxList = null, 
+        List<string> CarteMembres = null, List<string> Chapeaux = null, List<string> Conventions = null)
     {
         this._vie = vie;
         this._energie = energie;
@@ -126,10 +131,17 @@ public class PlayerData
         this._niveauxReussis = new List<string>();
         if (NiveauxList != null)
             this._niveauxReussis = NiveauxList;
-        if(Collectables != null)
-            this._collectables = Collectables;
-        if(Sprites != null)
-            this._spriteslist = Sprites;
+        this._carteMembres = new List<string>();
+        if (CarteMembres != null)
+            this._carteMembres = CarteMembres;
+        this._chapeaux = new List<string>();
+        if (Chapeaux != null)
+            this._chapeaux = Chapeaux;
+        this._conventions = new List<string>();
+        if (Conventions != null)
+            this._conventions = Conventions;
+
+
     }
 
     /// <summary>
@@ -242,30 +254,38 @@ public class PlayerData
     /// Ajoute le nom du collectionable à la liste
     /// </summary>
     /// <param name="nom">Nom du coffre à ajouter</param>
-    public void AjouterCollectable(string nom)
+    public void AjouterChapeau(string nom)
     {
-        this._collectables.Add(nom);
+        this._chapeaux.Add(nom);
+    }
+    public void AjouterCarteMembre(string nom)
+    {
+        this._carteMembres.Add(nom);
+    }
+    public void AjouterConvention(string nom)
+    {
+        this._conventions.Add(nom);
     }
 
-    public void AjouterSprite(string sprite)
-    {
-       this._spriteslist.Add(sprite);
-    }
-
-    public List<string> AvoirSprite()
-    {
-        return this._spriteslist;
-    }
 
     /// <summary>
-    /// Détermine si le coffre est contenu dans la liste
-    /// des coffres ouverts
+    /// Détermine si les collectables ont déjà été récupérés
     /// </summary>
-    /// <param name="nom">Nom du coffre à vérifier</param>
+    /// <param name="nom">Nom du collectable à vérifier</param>
     /// <returns>true si le coffre est ouvert, false sinon</returns>
-    public bool AvoirCollectable(string nom)
+    public bool AvoirChapeau(string nom)
     {
-        return this._collectables.Contains(nom);
+        return this._chapeaux.Contains(nom);
+    }
+
+    public bool AvoirCarteMembre(string nom)
+    {
+        return this._carteMembres.Contains(nom);
+    }
+
+    public bool AvoirConvention(string nom)
+    {
+        return this._conventions.Contains(nom);
     }
 
 }

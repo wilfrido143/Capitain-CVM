@@ -187,17 +187,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "a0294512-dc10-4fd2-a5c3-bfda61edb238",
-                    "path": "<Keyboard>/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "ClavierFleche",
                     "id": "6b0744df-9eb4-4a0d-a220-6d92f04369bb",
                     "path": "1DAxis",

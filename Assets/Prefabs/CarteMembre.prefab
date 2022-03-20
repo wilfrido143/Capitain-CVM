@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8901740759242161966}
   - component: {fileID: 4034574288078385870}
   - component: {fileID: 3160592454567549955}
-  - component: {fileID: 7880778714209923894}
   - component: {fileID: -8761241156025654925}
+  - component: {fileID: 6170880123645790562}
   m_Layer: 0
   m_Name: CarteMembre
   m_TagString: Untagged
@@ -208,20 +208,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7880778714209923894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2526090573675927414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fe1e9824c91a06408fde554e19ebd0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _regainEnergie: 1
-  _clip: {fileID: 8300000, guid: 65e1a6b584f1ea94b89ffd485d993824, type: 3}
 --- !u!114 &-8761241156025654925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,3 +221,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _estCollecter: 0
+--- !u!114 &6170880123645790562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2526090573675927414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db37ad56fa9439344aeda9ab597f09a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _regainEnergie: 4
+  _clip: {fileID: 8300000, guid: 65e1a6b584f1ea94b89ffd485d993824, type: 3}

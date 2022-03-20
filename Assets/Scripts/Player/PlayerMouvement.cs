@@ -18,7 +18,7 @@ public class PlayerMouvement : MonoBehaviour
 
     /// <summary>
     /// Représente la vitesse actuelle du joueur
-    /// Limité entre 0 et 6 m/s
+    /// Limité entre 0 et 6 m/s 
     /// </summary>
     [SerializeField, Range(0, 25)]
     private float _vitesse = 60f;
