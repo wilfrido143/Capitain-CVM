@@ -25,7 +25,7 @@ public class ConventionUpgrade : MonoBehaviour
             GameManager.Instance.AudioManager
                 .PlayClipAtPoint(_clip, this.transform.position);
             GameManager.Instance
-                .PlayerData.IncrEnergie(this._regainEnergie);
+                .PlayerData.IncrEnergie(this._regainEnergie, false);
             GameManager.Instance
                 .PlayerData.AjouterConvention(_name);
             GameObject.Destroy(this.gameObject);

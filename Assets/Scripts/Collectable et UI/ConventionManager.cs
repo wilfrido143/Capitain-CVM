@@ -25,9 +25,9 @@ public class ConventionManager : MonoBehaviour
             + $"__{(int)this.transform.position.x}_{(int)this.transform.position.y}";
 
         this._estCollecter = GameManager.Instance.PlayerData.AvoirConvention(_name);
-
-        if (_estCollecter)
-            GameObject.Destroy(this.gameObject);
+        if (_estCollecter != null)
+            if (_estCollecter )
+                GameObject.Destroy(this.gameObject);
     }
 
 }

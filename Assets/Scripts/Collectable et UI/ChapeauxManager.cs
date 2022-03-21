@@ -31,9 +31,9 @@ public class ChapeauxManager : MonoBehaviour
 
         this._estCollecter = GameManager.Instance.PlayerData.AvoirChapeau(_name);
 
-        if (_estCollecter)
-
-            GameObject.Destroy(this.gameObject);
+        if (_estCollecter != null)
+            if (_estCollecter)
+                GameObject.Destroy(this.gameObject);
     }
 
 }

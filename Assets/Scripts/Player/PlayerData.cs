@@ -110,14 +110,14 @@ public class PlayerData
         this._conventions = new List<string>();
     }
 
-    public PlayerData(int vie = 1, int energie = 2, int score = 0,
+    public PlayerData(int vie = 0, int energie = 0, int score = 0,
         float volumeGeneral = 0, float volumeMusique = 0, float volumeEffet = 0,
         System.Action uiPerteEnergie = null, System.Action uiPerteVie = null,
         System.Action gameOver = null, List<string> ChestList = null, List<string> NiveauxList = null, 
         List<string> CarteMembres = null, List<string> Chapeaux = null, List<string> Conventions = null)
     {
-        this._vie = vie;
-        this._energie = energie;
+        this._vie = 0;
+        this._energie = 0;
         this._score = score;
         this._volumeGeneral = volumeGeneral;
         this._volumeMusique = volumeMusique;
@@ -163,13 +163,13 @@ public class PlayerData
     /// </summary>
     public void DecrVie()
     {
-        this._vie--;
         this.UIPerteVie();
+        this._vie--;
         if (this._vie <= 0)
             this.Gameover();
         else
         {
-            this.IncrEnergie(MAX_ENERGIE);
+            this.IncrEnergie(MAX_ENERGIE, true);
             GameManager.Instance.RechargerNiveau();
         }
     }
@@ -178,10 +178,14 @@ public class PlayerData
     /// Permet d'augmenter l'énergie jusqu'à MAX_ENERGIE
     /// </summary>
     /// <param name="gain">Gain d'augmentation</param>
-    public void IncrEnergie(int gain)
+    public void IncrEnergie(int gain, bool revive)
     {
         this._energie += gain;
-        if (this._energie > MAX_ENERGIE)
+        if (revive)
+        {
+            this._energie = gain;
+        }
+        else if (this._energie > MAX_ENERGIE)
         {
             this._energie = 1;
             this.IncrVie();
@@ -251,9 +255,9 @@ public class PlayerData
     }
 
     /// <summary>
-    /// Ajoute le nom du collectionable à la liste
+    /// Ajoute le nom du collectable à la liste
     /// </summary>
-    /// <param name="nom">Nom du coffre à ajouter</param>
+    /// <param name="nom">Nom du collectable à ajouter</param>
     public void AjouterChapeau(string nom)
     {
         this._chapeaux.Add(nom);
@@ -272,7 +276,7 @@ public class PlayerData
     /// Détermine si les collectables ont déjà été récupérés
     /// </summary>
     /// <param name="nom">Nom du collectable à vérifier</param>
-    /// <returns>true si le coffre est ouvert, false sinon</returns>
+    /// <returns>true si le collectable est collecter, false sinon</returns>
     public bool AvoirChapeau(string nom)
     {
         return this._chapeaux.Contains(nom);
